@@ -1,0 +1,19 @@
+p{
+    color: red;
+    font-size: xx-large;
+}
+
+.paras{
+    color: blue;
+}
+
+#dapara, #other, #third{
+    color: yellow;
+}
+
+.first{
+    background-color: blue;
+    padding: 30px;
+    border: 20px solid black
+    
+}
