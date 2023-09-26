@@ -11,6 +11,17 @@
   padding: 0;
 }
 
+.loading{
+  font-size: 80px;
+  color:  white;
+  border: 4px solid white;
+  border-radius: 20px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 6em
+}
+
 @keyframes meals-appear {
   from {
     opacity: 0;
