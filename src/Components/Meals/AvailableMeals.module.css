@@ -22,6 +22,17 @@
   width: 6em
 }
 
+.error{
+  font-size: 60px;
+  color: red;
+  border: 4px solid red;
+  border-radius: 20px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 6em
+}
+
 @keyframes meals-appear {
   from {
     opacity: 0;
