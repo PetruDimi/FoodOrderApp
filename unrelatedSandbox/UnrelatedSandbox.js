@@ -323,7 +323,7 @@ console.log(coeff(6));
 
 function validateBet(game, text) {
   const betNumbers = text.split("");
-  const extractedNumbers = betNumbers.filter(x=> +x)
+  const extractedNumbers = betNumbers.filter((x) => +x);
 
   console.log(betNumbers);
   console.log(extractedNumbers);
@@ -342,3 +342,29 @@ const game = [5, 90];
 const text = "5,  39, 1  4,2";
 
 console.log(validateBet(game, text));
+// /////////////////////////////////////////////////////
+
+const fetchMeals = async () => {
+  const response = await fetch(
+    "https://foodorderapp-8b986-default-rtdb.firebaseio.com/meals.json"
+  );
+  const data = await response.json();
+  console.log(data);
+
+  if (!response.ok) {
+    throw new Error("Something went wrong!");
+  }
+
+  let mealsArr = [];
+
+  for (const key in data) {
+    mealsArr.push({
+      id: key,
+      name: data[key].name,
+      description: data[key].description,
+      price: data[key].price,
+    });
+  }
+  console.log(mealsArr);
+};
+fetchMeals();
