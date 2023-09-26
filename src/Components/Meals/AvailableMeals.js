@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
-  const [isLoading, setIsLoading] = useState(true)
-
+  const [isLoading, setIsLoading] = useState(true);
+  const [httpError, setHttpError] = useState('');
 
   useEffect(() => {
     const fetchMeals = async () => {
@@ -19,7 +19,7 @@ const AvailableMeals = () => {
         throw new Error("Something went wrong!");
       }
 
-       let loadingMeals = [];
+      let loadingMeals = [];
 
       for (const key in data) {
         loadingMeals.push({
@@ -29,15 +29,21 @@ const AvailableMeals = () => {
           price: data[key].price,
         });
       }
-
       setMeals(loadingMeals);
-      setIsLoading(false)
+      setIsLoading(false);
     };
-    fetchMeals();
+    fetchMeals().catch((error)=>{
+      setIsLoading(false)
+      setHttpError(error.message)
+    })
   }, []);
 
-  if(isLoading){
-    return(<p className={classes.loading}>Loading...</p>)
+  if (isLoading) {
+    return <p className={classes.loading}>Loading...</p>;
+  }
+
+  if(httpError){
+    return (<p className={classes.error}>{httpError}</p>)
   }
 
   const mealsList = meals.map((meal) => (
