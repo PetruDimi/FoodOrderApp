@@ -3,7 +3,7 @@ import classes from './MealsSummary.module.css'
 const MealsSummary = () => {
   return (
     <section className={classes.summary}>
-      <h2>Delicious Food, Delivered To Yoy</h2>
+      <h2>Delicious Food, Delivered To You</h2>
       <p>
         Choose your favourite meal from our broad selection of avalable meals
         and enjoy a delicious lunch and dinner at home.

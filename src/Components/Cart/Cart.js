@@ -1,5 +1,5 @@
 import CartContext from "../../store/cart-context";
-import { useContext, useState } from "react";
+import { useContext, useState, Fragment } from "react";
 import classes from "./Cart.module.css";
 
 import Modal from "../UI/Modal/Modal";
@@ -54,15 +54,22 @@ const Cart = (props) => {
   );
 
   return (
-    <Modal onHideCart={props.onHideCart}>
-      {cartItems}
-      <div className={classes.total}>
-        <span>Total Amount</span>
-        <span>{totalAmount}</span>
-      </div>
-      {!isCheckout && modalAction}
-      {isCheckout && <Checkout onCancel={props.onHideCart}/>}
-    </Modal>
+    <Fragment>
+      {isCheckout ? (
+        <Modal>
+          <Checkout amount={totalAmount} onCancel={props.onHideCart} />
+        </Modal>
+      ) : (
+        <Modal onHide={props.onHideCart}>
+          {cartItems}
+          <div className={classes.total}>
+            <span>Total Amount</span>
+            <span>{totalAmount}</span>
+          </div>
+          {!isCheckout && modalAction}
+        </Modal>
+      )}
+    </Fragment>
   );
 };
 
